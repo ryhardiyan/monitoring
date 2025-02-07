@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatsMonit</title>
+    <link href="/css/styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-5xl font-bold mb-8 text-center animated-text">Monitor Server</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+            <!-- CPU Usage -->
+            <div class="gradient-bg rounded-xl p-6 shadow-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 card-hover">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">CPU Usage</h2>
+                <div class="flex items-center justify-between">
+                    <div class="chart-container">
+                        <canvas id="cpu-chart"></canvas>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-4xl font-bold mb-2" id="cpu-usage">0%</div>
+                        <p class="text-sm text-gray-400 mb-1" id="cpu-name"></p>
+                        <p class="text-sm text-gray-400">Cores: <span id="cpu-cores"></span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RAM Usage -->
+            <div class="gradient-bg rounded-xl p-6 shadow-lg border border-gray-700 hover:border-green-500 transition-all duration-300 card-hover">
+                <h2 class="text-2xl font-semibold mb-4 text-green-300">RAM Usage</h2>
+                <div class="flex items-center justify-between">
+                    <div class="chart-container">
+                        <canvas id="ram-chart"></canvas>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-4xl font-bold mb-2" id="ram-usage">0%</div>
+                        <p class="text-sm text-gray-400" id="ram-text"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Disk Usage -->
+            <div class="gradient-bg rounded-xl p-6 shadow-lg border border-gray-700 hover:border-purple-500 transition-all duration-300 card-hover">
+                <h2 class="text-2xl font-semibold mb-4 text-purple-300">Disk Usage</h2>
+                <div class="flex items-center justify-between">
+                    <div class="chart-container">
+                        <canvas id="disk-chart"></canvas>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-4xl font-bold mb-2" id="disk-usage">0%</div>
+                        <p class="text-sm text-gray-400" id="disk-text"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- System Info -->
+            <div class="gradient-bg rounded-xl p-6 shadow-lg border border-gray-700 hover:border-yellow-500 transition-all duration-300 card-hover">
+                <h2 class="text-2xl font-semibold mb-4 text-yellow-300">System Info</h2>
+                <ul class="space-y-3">
+                    <li class="flex justify-between items-center">
+                        <span class="text-gray-400">Hostname:</span>
+                        <span id="hostname" class="font-semibold bg-gray-700 px-3 py-1 rounded-full"></span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <span class="text-gray-400">Platform:</span>
+                        <span id="platform" class="font-semibold bg-gray-700 px-3 py-1 rounded-full"></span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <span class="text-gray-400">Architecture:</span>
+                        <span id="architecture" class="font-semibold bg-gray-700 px-3 py-1 rounded-full"></span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <span class="text-gray-400">Uptime:</span>
+                        <span id="uptime" class="font-semibold bg-gray-700 px-3 py-1 rounded-full"></span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Load Average -->
+            <div class="gradient-bg rounded-xl p-6 shadow-lg border border-gray-700 hover:border-red-500 transition-all duration-300 card-hover">
+                <h2 class="text-2xl font-semibold mb-4 text-red-300">Load Average</h2>
+                <div class="grid grid-cols-3 gap-4 text-center">
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <p class="text-gray-400 text-sm mb-2">1 min</p>
+                        <p class="text-3xl font-bold" id="load-1"></p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <p class="text-gray-400 text-sm mb-2">5 min</p>
+                        <p class="text-3xl font-bold" id="load-5"></p>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <p class="text-gray-400 text-sm mb-2">15 min</p>
+                        <p class="text-3xl font-bold" id="load-15"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Network Usage -->
+        <div class="gradient-bg rounded-xl p-6 shadow-lg border border-gray-700 hover:border-indigo-500 transition-all duration-300 card-hover">
+            <h2 class="text-2xl font-semibold mb-6 text-indigo-300">Network Usage</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="network-interfaces">
+                <!-- Network interface data will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
