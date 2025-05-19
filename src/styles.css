@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+            --bg-gradient: linear-gradient(145deg, #1e2235, #111827);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f1118;
+            background-image: 
+                radial-gradient(circle at 25% 15%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 75% 85%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+        .gradient-bg {
+            background: var(--bg-gradient);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        .chart-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+        .animated-text {
+            background: linear-gradient(90deg, #3B82F6, #8B5CF6, #EC4899, #10B981);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 8s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .indicator-green { background-color: #10B981; }
+        .indicator-yellow { background-color: #F59E0B; }
+        .indicator-red { background-color: #EF4444; }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .status-pill {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+/* SweetAlert2 Custom Styles */
+        .swal2-popup {
+            border-radius: 1rem !important;
+            background: var(--bg-gradient) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+        }
+        .swal2-title, .swal2-content {
+            color: #fff !important;
+        }
+        .swal2-actions button {
+            border-radius: 0.5rem !important;
+            font-weight: 600 !important;
+            padding: 0.5rem 1.5rem !important;
+            transition: all 0.2s ease !important;
+        }
+        .swal2-actions button:hover {
+transform: translateY(-2px) !important;
+        }
