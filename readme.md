@@ -1,6 +1,6 @@
-# StatsMonit
+# statusMonitoring 
 
-**StatsMonit** is a lightweight server monitoring tool built with **Node.js** and **Socket.io**. It provides real-time system statistics, including **CPU usage, RAM usage, disk space, network activity**, and **uptime**.
+**statusMonitoring** is a lightweight server monitoring tool built with **Node.js** and **Socket.io**. It provides real-time system statistics, including **CPU usage, RAM usage, disk space, network activity**, and **uptime**.
 
 ## 🚀 Features
 
